@@ -6,7 +6,7 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace CompressorLib
+namespace CompressorLib.Parallel.Shared
 {
     public class ConcurrentGenerator<T> : IGenerator<T>
     {

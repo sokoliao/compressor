@@ -35,7 +35,7 @@ namespace CompressorLib
             compressionBuffer = new Lazy<byte[]>(() => 
                 new byte[(ChunkCompressedInfo.SIZE + size) * 2]);
         }
-        public void Compress()
+        public void Execute()
         {
             while (generator.TryDequeue(out var chunk))
             {
@@ -53,11 +53,7 @@ namespace CompressorLib
                 writer.Write(compressionBuffer.Value, 0, ChunkCompressedInfo.SIZE + compressedSize);
             }
         }
-    }
-
-    public interface IFileCompressor
-    {
-        void Compress();
+        public void Dispose() { }
     }
 
     public class FileCompressorOptions

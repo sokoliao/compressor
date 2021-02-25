@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CompressorLib.Abstractions.Compression;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.IO.Compression;
@@ -25,15 +26,5 @@ namespace CompressorLib
             }
             return (int)compressed.Position;
         }
-    }
-    public interface ICompressor
-    {
-        int Compress(
-            byte[] inputBuffer,
-            int inputBufferOffset,
-            int inputBufferSize,
-            byte[] compressionBuffer,
-            int compressionBufferOffset,
-            int compressionBufferSize);
     }
 }

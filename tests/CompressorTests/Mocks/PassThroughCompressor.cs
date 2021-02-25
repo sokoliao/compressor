@@ -1,4 +1,5 @@
 ﻿using CompressorLib;
+using CompressorLib.Abstractions.Compression;
 using System;
 using System.Collections.Generic;
 using System.Linq;

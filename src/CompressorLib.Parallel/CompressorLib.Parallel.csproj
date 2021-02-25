@@ -10,6 +10,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\CompressorLib.Abstractions\CompressorLib.Abstractions.csproj" />
+    <ProjectReference Include="..\compressorLib\CompressorLib.csproj" />
   </ItemGroup>
 
 </Project>

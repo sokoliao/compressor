@@ -11,9 +11,13 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{790914DC
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CompressorTests", "tests\CompressorTests\CompressorTests.csproj", "{7CBD2BBB-CB16-45E4-A1C2-90F0F3757557}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GZipTest", "src\GZipTest\GZipTest.csproj", "{E2AE9099-5E5D-416B-A670-F12C864EE0B4}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GZipTest", "src\GZipTest\GZipTest.csproj", "{E2AE9099-5E5D-416B-A670-F12C864EE0B4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CompressorLib.Abstractions", "src\CompressorLib.Abstractions\CompressorLib.Abstractions.csproj", "{C69315DB-4510-4924-ADAE-4B20DAB2FCD1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CompressorLib.Abstractions", "src\CompressorLib.Abstractions\CompressorLib.Abstractions.csproj", "{C69315DB-4510-4924-ADAE-4B20DAB2FCD1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CompressorLib.Parallel", "src\CompressorLib.Parallel\CompressorLib.Parallel.csproj", "{4BD79FB7-7FC7-4D43-B580-D32B9A6C4A3F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CompressorLib.Parallel.Tests", "tests\CompressorLib.Parallel.Tests\CompressorLib.Parallel.Tests.csproj", "{8B8C7354-DB44-4BA2-A56D-E93816460232}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -73,6 +77,30 @@ Global
 		{C69315DB-4510-4924-ADAE-4B20DAB2FCD1}.Release|x64.Build.0 = Release|Any CPU
 		{C69315DB-4510-4924-ADAE-4B20DAB2FCD1}.Release|x86.ActiveCfg = Release|Any CPU
 		{C69315DB-4510-4924-ADAE-4B20DAB2FCD1}.Release|x86.Build.0 = Release|Any CPU
+		{4BD79FB7-7FC7-4D43-B580-D32B9A6C4A3F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4BD79FB7-7FC7-4D43-B580-D32B9A6C4A3F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4BD79FB7-7FC7-4D43-B580-D32B9A6C4A3F}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{4BD79FB7-7FC7-4D43-B580-D32B9A6C4A3F}.Debug|x64.Build.0 = Debug|Any CPU
+		{4BD79FB7-7FC7-4D43-B580-D32B9A6C4A3F}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{4BD79FB7-7FC7-4D43-B580-D32B9A6C4A3F}.Debug|x86.Build.0 = Debug|Any CPU
+		{4BD79FB7-7FC7-4D43-B580-D32B9A6C4A3F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4BD79FB7-7FC7-4D43-B580-D32B9A6C4A3F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4BD79FB7-7FC7-4D43-B580-D32B9A6C4A3F}.Release|x64.ActiveCfg = Release|Any CPU
+		{4BD79FB7-7FC7-4D43-B580-D32B9A6C4A3F}.Release|x64.Build.0 = Release|Any CPU
+		{4BD79FB7-7FC7-4D43-B580-D32B9A6C4A3F}.Release|x86.ActiveCfg = Release|Any CPU
+		{4BD79FB7-7FC7-4D43-B580-D32B9A6C4A3F}.Release|x86.Build.0 = Release|Any CPU
+		{8B8C7354-DB44-4BA2-A56D-E93816460232}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8B8C7354-DB44-4BA2-A56D-E93816460232}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8B8C7354-DB44-4BA2-A56D-E93816460232}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{8B8C7354-DB44-4BA2-A56D-E93816460232}.Debug|x64.Build.0 = Debug|Any CPU
+		{8B8C7354-DB44-4BA2-A56D-E93816460232}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{8B8C7354-DB44-4BA2-A56D-E93816460232}.Debug|x86.Build.0 = Debug|Any CPU
+		{8B8C7354-DB44-4BA2-A56D-E93816460232}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8B8C7354-DB44-4BA2-A56D-E93816460232}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8B8C7354-DB44-4BA2-A56D-E93816460232}.Release|x64.ActiveCfg = Release|Any CPU
+		{8B8C7354-DB44-4BA2-A56D-E93816460232}.Release|x64.Build.0 = Release|Any CPU
+		{8B8C7354-DB44-4BA2-A56D-E93816460232}.Release|x86.ActiveCfg = Release|Any CPU
+		{8B8C7354-DB44-4BA2-A56D-E93816460232}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -82,6 +110,8 @@ Global
 		{7CBD2BBB-CB16-45E4-A1C2-90F0F3757557} = {790914DC-7A4D-4D96-96DC-54789D5AC440}
 		{E2AE9099-5E5D-416B-A670-F12C864EE0B4} = {E4B6A19A-B4DA-4019-AD99-5F76277F0018}
 		{C69315DB-4510-4924-ADAE-4B20DAB2FCD1} = {E4B6A19A-B4DA-4019-AD99-5F76277F0018}
+		{4BD79FB7-7FC7-4D43-B580-D32B9A6C4A3F} = {E4B6A19A-B4DA-4019-AD99-5F76277F0018}
+		{8B8C7354-DB44-4BA2-A56D-E93816460232} = {790914DC-7A4D-4D96-96DC-54789D5AC440}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {CE36E26A-C9F5-42BE-B97F-322808B4F63D}

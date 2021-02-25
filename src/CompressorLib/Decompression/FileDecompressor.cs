@@ -28,7 +28,7 @@ namespace CompressorLib
             this.decompressor = decompressor;
             this.writer = writer;
         }
-        public void Decompress()
+        public void Execute()
         {
             while (generator.TryDequeue(out var info))
             {
@@ -53,10 +53,6 @@ namespace CompressorLib
                 writer.Write(decompressBuffer, 0, info.target.size, info.target.offset);
             }
         }
-    }
-
-    public interface IFileDecompressor
-    {
-        void Decompress();
+        public void Dispose() { }
     }
 }

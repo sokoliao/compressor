@@ -38,7 +38,7 @@ namespace CompressorTests
 
             // Act
 
-            fileDecompressor.Decompress();
+            fileDecompressor.Execute();
 
             // Assert
 

@@ -1,4 +1,9 @@
-﻿using CompressorLib;
+﻿using Autofac;
+using CompressorLib;
+using CompressorLib.Abstractions.Compression;
+using CompressorLib.Abstractions.Decompression;
+using CompressorLib.Abstractions.Shared;
+using CompressorLib.Creation;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -38,35 +43,66 @@ namespace CompressorTests.Intergration
             }
 
             var compressedFilePath = tempFileProvider.GetTempFile();
-            var compressionInput = new FileReader(originalFilePath);
-            var compressionOutput = new FileWriter(compressedFilePath);
-            var compressor = new FileCompressor(
-                new FileCompressorOptions { Size = chunkSize },
-                new CompressionInfoGenerator(
-                    new CompressorInfoGeenratorOptions { Path = originalFilePath,  Size = chunkSize },
-                    new FileService()),
-                compressionInput,
-                new Compressor(),
-                compressionOutput);
+
+            {
+                var builder = new ContainerBuilder();
+                builder.RegisterModule(new CompressorLibModule(
+                    originalFilePath,
+                    chunkSize,
+                    compressedFilePath));
+                var container = builder.Build();
+                using (var scope = container.BeginLifetimeScope())
+                {
+                    var compressor = scope.Resolve<IFileCompressor>();
+                    compressor.Execute();
+                }
+            }
+
+            //var compressionInput = new FileReader(originalFilePath);
+            //var compressionOutput = new FileWriter(compressedFilePath);
+            //var compressor = new FileCompressor(
+            //    new FileCompressorOptions { Size = chunkSize },
+            //    new CompressionInfoGenerator(
+            //        new CompressorInfoGeenratorOptions { Path = originalFilePath,  Size = chunkSize },
+            //        new FileService()),
+            //    compressionInput,
+            //    new Compressor(),
+            //    compressionOutput);
 
             var decompressedFilePath = tempFileProvider.GetTempFile();
-            var decompressionInput = new FileReader(compressedFilePath);
-            var decompressionOutput = new FileWriter(decompressedFilePath);
-            var decompressor = new FileDecompressor(
-                new DecompressionInfoGenerator(decompressionInput),
-                decompressionInput,
-                new Decompressor(),
-                decompressionOutput);
+            //var decompressionInput = new FileReader(compressedFilePath);
+            //var decompressionOutput = new FileWriter(decompressedFilePath);
+            //var decompressor = new FileDecompressor(
+            //    new DecompressionInfoGenerator(decompressionInput),
+            //    decompressionInput,
+            //    new Decompressor(),
+            //    decompressionOutput);
+
+            {
+                var builder = new ContainerBuilder();
+                builder.RegisterModule(new CompressorLibModule(
+                    compressedFilePath,
+                    chunkSize,
+                    decompressedFilePath));
+                var container = builder.Build();
+                using (var scope = container.BeginLifetimeScope())
+                {
+                    var compressor = scope.Resolve<IFileDecompressor>();
+                    compressor.Execute();
+                }
+            }
+
+
 
             // Act
 
-            compressor.Compress();
-            compressionInput.Dispose();
-            compressionOutput.Dispose();
+            //compressor.Execute();
+            //compressionInput.Dispose();
+            //compressionOutput.Dispose();
 
-            decompressor.Decompress();
-            decompressionInput.Dispose();
-            decompressionOutput.Dispose();
+            //decompressor.Execute();
+            //decompressionInput.Dispose();
+            //decompressionOutput.Dispose();
 
             // Assert
 

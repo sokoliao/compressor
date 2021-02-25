@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CompressorLib.Abstractions.Decompression;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.IO.Compression;
@@ -22,14 +23,5 @@ namespace CompressorLib
                 return decompressor.Read(decompressionBuffer, 0, decompressionBuffer.Length);
             }
         }
-    }
-
-    public interface IDecompressor
-    {
-        int Decompress(
-            byte[] inputBuffer,
-            int inputBufferOffset,
-            int inputBufferSize,
-            byte[] decompressionBuffer);
     }
 }
